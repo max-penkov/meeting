@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'as'        => 'api.',
+    'namespace' => 'Api',
+    'prefix'    => 'api',
+], function () {
+    Route::get('/members', 'MemberController@index')->name('members');
+    Route::post('/members', 'MemberController@create')->name('members.create');
 });
