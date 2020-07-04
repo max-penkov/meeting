@@ -19,6 +19,8 @@ Route::group([
     'namespace' => 'Api',
     'prefix'    => 'api',
 ], function () {
-    Route::get('/members', 'MemberController@index')->name('members');
-    Route::post('/members', 'MemberController@create')->name('members.create');
+    Route::get('/members/{event?}', 'MemberController@index')->name('members');
+    Route::post('/{event}/members', 'MemberController@create')->name('members.create');
+    Route::put('/members/{member}', 'MemberController@edit')->name('members.edit');
+    Route::delete('/members/{member}', 'MemberController@delete')->name('members.delete');
 });

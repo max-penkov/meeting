@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Event;
 use App\Member;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
@@ -23,5 +24,12 @@ class MemberTest extends TestCase
         self::assertEquals($firstName, $member->first_name);
         self::assertEquals($lastName, $member->last_name);
         self::assertEquals($email, $member->email);
+    }
+
+    public function testMemberBelongsToEvent()
+    {
+        $member = factory(Member::class)->create();
+
+        $this->assertInstanceOf(Event::class, $member->event);
     }
 }
