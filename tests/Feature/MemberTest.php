@@ -108,6 +108,6 @@ class MemberTest extends TestCase
 
         $data = json_decode($content, true);
         self::assertNull($data);
-        self::assertDatabaseMissing('memmbers', ['id' => $member->id]);
+        self::assertDatabaseMissing('members', ['id' => $member->id]);
     }
 }
